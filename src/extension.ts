@@ -1,11 +1,12 @@
 import * as vscode from 'vscode';
 import { Credentials } from './credentials';
 import {SampleWebViewPanel} from './sampleWebViewPanel';
+import { connect } from './main';
 
 export async function activate(context: vscode.ExtensionContext) {
 	const credentials = new Credentials();
 	await credentials.initialize(context);
-
+	connect();
 
 
 	const disposable = vscode.commands.registerCommand('extension.getGitHubUser', async () => {
